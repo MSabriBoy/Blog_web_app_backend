@@ -1,8 +1,12 @@
 const mongoose = require('../db');
 
-const Postschema = mongoose.Schema({
+const postSchema = mongoose.Schema({
     title: String,
     content:String,
     createdAt:Date
 
 })
+
+const Post = mongoose.model("Post", postSchema)
+
+module.exports= Post;
