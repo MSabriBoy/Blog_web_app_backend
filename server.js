@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express= require('express')
 const router = require('./routes/blogRoutes')
+const cors = require('cors')
 
 require('./db'); 
 
@@ -9,6 +10,7 @@ const app= express();
 
 const port = process.env.PORT || 5000;
 
+app.use(cors());
 app.use(express.json())
 
 //custom middleware
