@@ -4,10 +4,22 @@ const Post = require('../models/Post')
 const router= express.Router()
 
 
-router.post("/posts", async (req,res)=>{
-    const post = await Post.create(req.body)
-    res.json(post)
-}) 
+router.post("/posts", async (req, res) => {
+  const { title, content } = req.body;
+
+  if (!title.trim() || !content.trim()) {
+    return res.status(400).json({
+      message: "Title and content are required"
+    });
+  }
+
+  const post = await Post.create({
+    title,
+    content
+  });
+
+  res.json(post);
+}); 
 
 router.get("/posts", async (req, res)=>{
     const post = await Post.find()
@@ -56,6 +68,5 @@ router.post("/login",(req,res)=>{
             })
     }
 })
-
 
 module.exports= router

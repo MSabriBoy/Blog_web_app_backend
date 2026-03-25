@@ -4,7 +4,7 @@ const express= require('express')
 const router = require('./routes/blogRoutes')
 const cors = require('cors')
 
-require('./db'); 
+require('./config/db'); 
 
 const app= express();
 
