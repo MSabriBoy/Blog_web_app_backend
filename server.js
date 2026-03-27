@@ -10,7 +10,9 @@ const app= express();
 
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: "https://blog-web-app-frontend-tawny-kappa.vercel.app/"
+}));
 app.use(express.json())
 
 //custom middleware
@@ -22,7 +24,7 @@ app.use((req,res,next)=>{
     next();
 })
 
-app.use(router)
+app.use("/api", router)
 
 app.get('/',(req,res)=>{
     res.json({
